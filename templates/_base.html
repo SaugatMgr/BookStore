@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Book Store</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="author" content="">
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+
+	    <link rel="stylesheet" type="text/css" href="{% static 'booksaw/css/normalize.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'booksaw/icomoon/icomoon.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'booksaw/css/vendor.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'booksaw/style.css' %}">
+
+		<!-- script
+		================================================== -->
+		<script src="{% static 'booksaw/js/modernizr.js' %}"></script>
+
+	</head>
+
+<body>
+
+{% include "booksaw/header/header.html" %}
+
+{% block content %}
+  
+{% endblock content %}
+
+{% include "booksaw/footer/footer.html" %}
+
+<script src="{% static 'booksaw/js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'booksaw/js/plugins.js' %}"></script>
+<script src="{% static 'booksaw/js/script.js' %}"></script>
+
+</body>
+</html>	
