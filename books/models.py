@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
 
 
 class Tag(models.Model):
-    tag = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
 
 
 class Book(models.Model):
