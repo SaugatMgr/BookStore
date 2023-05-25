@@ -1,0 +1,25 @@
+{% load static %}
+
+{% for genre in genres %}
+    <div id="{{ genre.name }}" data-tab-content>
+        <div class="row">
+            {% for book in books_by_genre %}
+                <div class="col-md-3">
+                    <figure class="product-style">
+                        <img src="{{ book.book_cover.url }}"
+                            alt="Books"
+                            class="product-item"
+                            height=""
+                            width="">
+                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                        <figcaption>
+                            <h3>{{ book.title }}</h3>
+                            <p>{{ book.author }}</p>
+                            <div class="item-price">$ {{ book.price }}</div>
+                        </figcaption>
+                    </figure>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
