@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Category(models.Model):
+class Genre(models.Model):
     name = models.CharField(max_length=64)
 
     def __str__(self):
@@ -24,8 +24,8 @@ class Book(models.Model):
     copies_sold = models.PositiveBigIntegerField(default=0)
 
     # 1 to Many relationship with Book
-    category = models.ForeignKey(
-        Category,
+    genre = models.ForeignKey(
+        Genre,
         on_delete=models.CASCADE,
     )
 
