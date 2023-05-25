@@ -1,0 +1,24 @@
+{% load static %}
+
+<section id="popular-books" class="bookshelf">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header align-center">
+                    <div class="title">
+                        <span>Some quality items</span>
+                    </div>
+                    <h2 class="section-title">Popular Books</h2>
+                </div>
+
+                {% include "booksaw/main/popular_books/tabs/popular_books_tab.html" %}
+
+                <div class="tab-content">
+                    {% include "booksaw/main/popular_books/all genre/all_genre_books.html" %}
+                    {% include "booksaw/main/popular_books/books_by_genre/popular_books_by_genre.html" %}
+                </div>
+            </div>
+            <!--inner-tabs-->
+        </div>
+    </div>
+</section>
