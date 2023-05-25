@@ -20,6 +20,10 @@ class HomePageView(ListView):
                                                     
         context['popular_books_bottom'] = filter_object[4:7]
         
+        context['billboard_books'] = Book.objects.all()[:3:-1]
+        
+        context['featured_books'] = filter_object[:4:-1]
+        
         context['genres'] = Genre.objects.all()[:5]
                                                     
         return context
