@@ -1,0 +1,6 @@
+<ul class="tabs">
+    <li data-tab-target="#all-genre" class="active tab">All Genre</li>
+    {% for genre in genres %}
+        <li data-tab-target="#{{ genre.name }}" class="tab">{{ genre.name|title }}</li>
+    {% endfor %}
+</ul>
