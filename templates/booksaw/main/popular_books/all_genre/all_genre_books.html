@@ -1,0 +1,37 @@
+{% load static %}
+<div id="all-genre" data-tab-content class="active">
+    <div class="row">
+        {% for popular_book in popular_books_top %}
+            <div class="col-md-3">
+                <figure class="product-style">
+                    <img src="{{ popular_book.book_cover.url }}"
+                         alt="Books"
+                         class="product-item">
+                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                    <figcaption>
+                        <h3>{{ popular_book.title }}</h3>
+                        <p>{{ popular_book.author }}</p>
+                        <div class="item-price">$ {{ popular_book.price }}</div>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for popular_book in popular_books_bottom %}
+            <div class="col-md-3">
+                <figure class="product-style">
+                    <img src="{{ popular_book.book_cover.url }}"
+                         alt="Books"
+                         class="product-item">
+                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                    <figcaption>
+                        <h3>{{ popular_book.title }}</h3>
+                        <p>{{ popular_book.author }}</p>
+                        <div class="item-price">$ {{ popular_book.price }}</div>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+</div>
