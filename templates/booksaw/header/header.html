@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="main-logo">
-                        <a href="index.html">
+                        <a href="{% url 'home' %}">
                             <img src="{% static 'booksaw/images/main-logo.png' %}" alt="logo">
                         </a>
                     </div>
@@ -63,7 +63,7 @@
                         <div class="main-menu stellarnav">
                             <ul class="menu-list">
                                 <li class="menu-item active">
-                                    <a href="#home" data-effect="Home">Home</a>
+                                    <a href="{% url 'home' %}" data-effect="Home">Home</a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="#about" class="nav-link" data-effect="About">About</a>
