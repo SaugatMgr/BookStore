@@ -10,7 +10,11 @@
                          style="width:290px;height:380px;">
                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                     <figcaption>
-                        <h3>{{ popular_book.title }}</h3>
+                        <h3>
+                            <a href="{% url 'detail' popular_book.pk %}">
+                                {{ popular_book.title }}
+                            </a>
+                        </h3>
                         <p>{{ popular_book.author }}</p>
                         <div class="item-price">$ {{ popular_book.price }}</div>
                     </figcaption>
@@ -28,7 +32,11 @@
                          style="width:290px;height:380px;">
                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                     <figcaption>
-                        <h3>{{ popular_book.title }}</h3>
+                        <h3>
+                            <a href="{% url 'detail' popular_book.pk %}">
+                                {{ popular_book.title }}
+                            </a>
+                        </h3>
                         <p>{{ popular_book.author }}</p>
                         <div class="item-price">$ {{ popular_book.price }}</div>
                     </figcaption>
