@@ -1,0 +1,193 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="site-banner">
+        <div class="banner-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="colored">
+                            <h1 class="page-title">About Us</h1>
+                            <div class="breadcum-items">
+                                <span class="item"><a href="{% url 'home' %}">Home /</a></span>
+                                <span class="item colored">About Us</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--site-banner-->
+    <section class="chief-detail padding-large">
+        <div class="container">
+            <div class="row">
+                <div class="single-image col-md-12"></div>
+                <p style="margin-bottom:0%">Welcome to BOOKSAW, your ultimate destination for literary exploration and discovery!</p>
+                <br>
+                <p style="margin-bottom:0%">
+                    At BOOKSAW, we are passionate about books and the profound impact they have on our
+                    lives. Our mission is to create a haven for book lovers, where you can indulge in the
+                    magic of storytelling, expand your knowledge, and embark on unforgettable reading
+                    journeys.
+                </p>
+                <br>
+                <p style="margin-bottom:0%">
+                    Step into our virtual bookstore and be greeted by an exquisite collection of books
+                    spanning a multitude of genres and categories. We meticulously curate our selection,
+                    handpicking titles that will captivate your imagination, provoke your thoughts, and
+                    evoke a range of emotions. From classic literature to contemporary bestsellers, from
+                    niche genres to popular series, our diverse assortment guarantees that every reader
+                    can find something to suit their taste.
+                </p>
+                <br>
+                <p style="margin-bottom:0%">
+                    BOOKSAW is more than just a place to buy books; it's a vibrant community of
+                    like-minded individuals who share a deep love for reading. Connect with fellow book
+                    lovers through our forums, book clubs, and author events. Engage in thought-provoking
+                    discussions, exchange recommendations, and embark on literary adventures together. Let
+                    BOOKSAW be your virtual gathering place, where friendships are forged, and a shared
+                    passion for books unites us all.
+                </p>
+                <br>
+                <p style="margin-bottom:0%">
+                    Thank you for choosing BOOKSAW as your literary companion. Join us on this enchanting
+                    journey as we celebrate the written word, nurture the love of reading, and create a
+                    community that cherishes the transformative power of books. Together, let's embrace
+                    the adventure, broaden our minds, and let our imaginations soar through the pages of
+                    captivating stories. Happy reading!
+                </p>
+                <br>
+            </div>
+        </div>
+    </section>
+    <section class="our-team bg-sand padding-large">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title text-center mb-4">Our Team</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="team-member text-center">
+                        <figure>
+                            <a href="#">
+                                <img src="{% static 'booksaw/images/team-member2.jpg' %}"
+                                     alt="post"
+                                     class="member-image">
+                            </a>
+                        </figure>
+                        <div class="member-details text-center">
+                            <h4>Mrs. Nocole Sara</h4>
+                            <div class="designation colored">CEO-Founder</div>
+                            <div class="social-links color-primary ">
+                                <a href="#" class="icon icon-facebook pr-10"></a>
+                                <a href="#" class="icon icon-twitter pr-10"></a>
+                                <a href="#" class="icon icon-pinterest-p"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--col-md-3-->
+                <div class="col-md-3 text-center">
+                    <div class="team-member text-center">
+                        <figure>
+                            <img src="{% static 'booksaw/images/team-member5.jpg' %}"
+                                 alt="post"
+                                 class="member-image">
+                        </figure>
+                        <div class="member-details text-center">
+                            <h4>Ms Sienna Jolie</h4>
+                            <div class="designation colored">General Manager</div>
+                            <div class="social-links color-primary">
+                                <a href="#" class="icon icon-facebook pr-10"></a>
+                                <a href="#" class="icon icon-twitter pr-10"></a>
+                                <a href="#" class="icon icon-pinterest-p"></a>
+                            </div>
+                        </div>
+                        <!--text-content-->
+                    </div>
+                </div>
+                <!--col-md-3-->
+                <div class="col-md-3 text-center">
+                    <div class="team-member text-center">
+                        <figure>
+                            <img src="{% static 'booksaw/images/team-member7.jpg' %}"
+                                 alt="post"
+                                 class="member-image">
+                        </figure>
+                        <div class="member-details text-center">
+                            <h4>Ms Jenny Blacksmith</h4>
+                            <div class="designation colored">Assistant Manager</div>
+                            <div class="social-links color-primary">
+                                <a href="#" class="icon icon-facebook pr-10"></a>
+                                <a href="#" class="icon icon-twitter pr-10"></a>
+                                <a href="#" class="icon icon-pinterest-p"></a>
+                            </div>
+                        </div>
+                        <!--text-content-->
+                    </div>
+                </div>
+                <!--col-md-3-->
+                <div class="col-md-3 text-center">
+                    <div class="team-member text-center">
+                        <figure>
+                            <img src="{% static 'booksaw/images/team-member3.jpg' %}"
+                                 alt="post"
+                                 class="member-image">
+                        </figure>
+                        <div class="member-details text-center">
+                            <h4>Mrs Lora Inn</h4>
+                            <div class="designation colored">Staff</div>
+                            <div class="social-links color-primary">
+                                <a href="#" class="icon icon-facebook pr-10"></a>
+                                <a href="#" class="icon icon-twitter pr-10"></a>
+                                <a href="#" class="icon icon-pinterest-p"></a>
+                            </div>
+                        </div>
+                        <!--text-content-->
+                    </div>
+                </div>
+                <!--col-md-3-->
+            </div>
+        </div>
+    </section>
+    <section class="padding-large">
+        <div class="container">
+            <h2 class="section-title text-center mt-5">Our Mission</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="{% static 'booksaw/images/post-img3.jpg' %}"
+                         alt="book-authors"
+                         class="align-right">
+                    <p style="margin-bottom:0;">
+                        At [BOOKSAW], our mission is to ignite a love for reading and inspire
+                        lifelong learning. We curate a diverse collection of books, catering to all
+                        interests and age groups, ensuring a well-rounded assortment that reflects
+                        diverse voices and perspectives. With a commitment to quality and authenticity,
+                        we provide an exceptional online bookstore experience where book enthusiasts can
+                        explore, discover, and connect.
+                    </p>
+                    <br>
+                    <p style="margin-bottom:0;">
+                        We strive to foster a sense of community by creating a space where readers can
+                        share recommendations, engage in meaningful discussions, and connect with fellow
+                        book lovers. Our user-friendly website and dedicated customer service ensure a
+                        seamless purchasing experience, allowing you to find the perfect book that speaks
+                        to your soul and leaves a lasting impact.
+                    </p>
+                    <br>
+                    <p style="margin-bottom:0;">
+                        Join us on our mission to cultivate a vibrant reading culture, celebrate the
+                        power of knowledge, and embark on unforgettable literary journeys. Welcome to
+                        [BOOKSAW], where stories come alive and the joy of reading is embraced
+                        by all.
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
