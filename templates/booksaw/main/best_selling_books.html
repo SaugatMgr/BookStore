@@ -8,7 +8,7 @@
                     <div class="col-md-6">
                         <figure class="products-thumb">
                             <img src="{{ best_selling_book.book_cover.url }}"
-                                 alt="book"
+                                 alt="{{ best_selling_book.title }}"
                                  class="single-image"
                                  style="width:380px;height:542px;">
                         </figure>
@@ -18,7 +18,11 @@
                             <h2 class="section-title divider">Best Selling Book</h2>
                             <div class="products-content">
                                 <div class="author-name">By {{ best_selling_book.author }}</div>
-                                <h3 class="item-title">{{ best_selling_book.title }}</h3>
+                                <h3 class="item-title">
+                                    <a href="{% url 'detail' best_selling_book.pk %}">
+                                        {{ best_selling_book.title }}
+                                    </a>
+                                </h3>
                                 <p>{{ best_selling_book.description|truncatechars:109 }}</p>
                                 <div class="item-price">$ {{ best_selling_book.price }}</div>
                                 <div class="btn-wrap">

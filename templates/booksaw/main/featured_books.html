@@ -21,7 +21,11 @@
                                                 height:380px">
                                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                                     <figcaption>
-                                        <h3>{{ featured_book.title }}</h3>
+                                        <h3>
+                                            <a href="{% url 'detail' featured_book.pk %}">
+                                                {{ featured_book.title }}
+                                            </a>
+                                        </h3>
                                         <p>{{ featured_book.author }}</p>
                                         <div class="item-price">$ {{ featured_book.price }}</div>
                                     </figcaption>
