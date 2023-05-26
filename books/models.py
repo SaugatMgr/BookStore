@@ -34,3 +34,25 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class NameEmailField(models.Model):
+    name = models.CharField(max_length=64)
+    email = models.EmailField()
+
+    class Meta:
+        # Don't make table of this class/model
+        abstract = True 
+
+class Comment(NameEmailField):
+    comment = models.TextField()
+
+    def __str__(self):
+        return f"{self.name}: {self.comment[:25]}"
+
+
+class Contact(NameEmailField):
+    message = models.TextField()
+
+    def __str__(self):
+        return f"{self.name}: {self.message[:25]}"
