@@ -13,14 +13,19 @@
                                 <h2 class="banner-title">{{ book.title }}</h2>
                                 <p>{{ book.description|truncatechars:109 }}</p>
                                 <div class="btn-wrap">
-                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i class="icon icon-ns-arrow-right"></i></a>
+                                    <a href="{% url 'detail' book.pk %}"
+                                       class="btn btn-outline-accent btn-accent-arrow">
+                                       Read More
+                                       <i class="icon icon-ns-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
                             <!--banner-content-->
                             <img src="{{ book.book_cover.url }}"
                                  alt="{{ book.title }}"
                                  class="banner-image"
-                                 style="width:395px;height:572px;">
+                                 style="width:395px;
+                                        height:572px">
                         </div>
                     {% endfor %}
                     <!--slider-item-->
