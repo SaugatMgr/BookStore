@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView
+from django.shortcuts import redirect, render
+from django.views.generic import View, ListView, DetailView, TemplateView
+from django.contrib import messages
+
+from .forms import ContactForm
 
 from .models import Book, Genre
 
@@ -46,6 +49,29 @@ class HomePageView(ListView):
 
 class AboutPageView(TemplateView):
     template_name = 'about.html'
+
+
+class ContactPageView(View):
+    template_name = "contact.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "Your message has been successfully sent—thank you for reaching out to us!"
+            )
+            return redirect("contact")
+        else:
+            messages.error(
+                request, "Please ensure all required fields are filled out correctly \
+                to submit the contact form."
+            )
+            return render(request, self.template_name, {"form": form})
 
 
 class BookDetailView(DetailView):
