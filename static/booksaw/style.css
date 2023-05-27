@@ -1578,7 +1578,7 @@ span.prev-price {
     border: none;
     width: 252px;
 }
-#subscribe form#form {
+#subscribe form#newsletter_form {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #6F6F6F;
@@ -1593,7 +1593,7 @@ span.prev-price {
 
 
 @media screen and (max-width: 1200px) {
-  #subscribe form#form {
+  #subscribe form#newsletter_form {
       width: 90%;
   }
   #subscribe .subscribe-content input[type="text"] {
@@ -1618,11 +1618,11 @@ span.prev-price {
       text-align: left;
       margin: 30px auto;
   }
-  #subscribe form#form,
+  #subscribe form#newsletter_form,
   #subscribe .subscribe-content {
       width: 100%;
   }
-  #subscribe form#form {
+  #subscribe form#newsletter_form {
       margin: 0 auto;
   }
   #subscribe .subscribe-content {
@@ -1636,7 +1636,7 @@ span.prev-price {
 
 /*
 @media screen and (max-width: 780px) {
-  #subscribe form#form {
+  #subscribe form#newsletter_form {
       width: 90%;
   }
   #subscribe .subscribe-content {
