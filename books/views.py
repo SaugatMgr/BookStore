@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.views.generic import View, ListView, DetailView, TemplateView
 from django.contrib import messages
+from django.http import JsonResponse
 
-from .forms import ContactForm
+from .forms import ContactForm, NewsLetterForm
 
 from .models import Book, Genre
 
@@ -78,3 +79,38 @@ class BookDetailView(DetailView):
     model = Book
     template_name = 'booksaw/main/detail/book_detail.html'
     context_object_name = 'book'
+
+
+class NewsLetterView(View):
+    def post(self, request, *args, **kwargs):
+        ajax_format = request.headers.get("x-requested-with")
+        
+        if ajax_format == "XMLHttpRequest":
+            form = NewsLetterForm(request.POST)
+            if form.is_valid():
+                form.save()
+                
+                return JsonResponse(
+                    {
+                    "success": True,
+                    "message": "Thank you for subscribing to our newsletter! We look forward to \
+                                sharing exciting literary adventures with you straight to your inbox."
+                    },
+                    status=201, # create code
+                )
+            else:
+                return JsonResponse(
+                    {
+                    "success": False,
+                    "message": "Oops! It seems there was an issue with your newsletter \
+                                subscription—please double-check your email and try again."
+                    },
+                    status=400,
+                )
+        return JsonResponse(
+            {
+                'success': False,
+                'message': 'Cannot process.Must be and AJAX XMLHttpRequest.',
+            },
+            status=400,
+        )
