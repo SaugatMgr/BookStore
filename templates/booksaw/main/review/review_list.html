@@ -1,0 +1,31 @@
+{% load static %}
+
+<section class="comments-wrap mb-4">
+    <h3>Reviews</h3>
+    <div class="comment-list mt-4">
+        {% for review in book.reviews.all %}
+            <div class="child-comments">
+                <article class="flex-container d-flex">
+                    <img src="{% static 'booksaw/images/default.png' %}"
+                         alt="sara"
+                         class="commentorImg">
+                    <div class="author-post">
+                        <div class="comment-meta d-flex">
+                            <h4>{{ review.name }}</h4>
+                            <span class="meta-date">{{ review.created_date }}</span>
+                            <small class="comments-reply"><a href="#"><i class="icon icon-mail-reply"></i>Reply</a></small>
+                        </div>
+                        <!--meta-tags-->
+                        <p>
+                            {{ review.review }}
+                        {% empty %}
+                            No Reviews yet
+                        </p>
+                    </div>
+                </article><!--flex-container-->
+            </div>
+            <!--child-comments-->
+        {% endfor %}
+    </div>
+    <!--comment-list-->
+</section>
