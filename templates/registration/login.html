@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<section class="comment-respond mb-5">
+    <h3>Log In</h3>
+    <form action="" method="post" class="form-group mt-3">
+        {% csrf_token %}
+        <input type="hidden" name="book" value="{{ book.pk }}">
+        <div class="row">
+            <div class="col-md-6">
+                <input class="u-full-width"
+                       type="text"
+                       name="username"
+                       class="form-control mb-4 mr-4"
+                       placeholder="Username" />
+            </div>
+            <div class="col-md-6">
+                <input class="u-full-width"
+                       type="email"
+                       name="email"
+                       class="form-control mb-4"
+                       placeholder="E-mail Address" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input class="u-full-width"
+                       type="password"
+                       name="password"
+                       class="form-control mb-4"
+                       placeholder="Password" />
+            </div>
+            <div class="col-md-12">
+                <input class="btn btn-rounded btn-large btn-full"
+                       type="submit"
+                       value="Submit" />
+            </div>
+        </div>
+    </form>
+</section>
+{% endblock content %}
