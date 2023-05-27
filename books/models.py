@@ -42,7 +42,8 @@ class NameEmailField(models.Model):
 
     class Meta:
         # Don't make table of this class/model
-        abstract = True 
+        abstract = True
+
 
 class Comment(NameEmailField):
     comment = models.TextField()
@@ -56,3 +57,10 @@ class Contact(NameEmailField):
 
     def __str__(self):
         return f"{self.name}: {self.message[:25]}"
+
+
+class NewsLetter(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email
