@@ -3,9 +3,9 @@ from django.views.generic import View, ListView, DetailView, TemplateView
 from django.contrib import messages
 from django.http import JsonResponse
 
-from .forms import ContactForm, NewsLetterForm
+from .forms import ContactForm, NewsLetterForm, ReviewForm
 
-from .models import Book, Genre
+from .models import Book, Genre, Review
 
 
 class HomePageView(ListView):
@@ -114,3 +114,30 @@ class NewsLetterView(View):
             },
             status=400,
         )
+        
+class ReviewView(View):
+    def post(self, request, *args, **kwargs):
+        form = ReviewForm(request.POST)
+        book_id = request.POST["book"]
+        current_book = Book.objects.get(pk=book_id)
+        
+        if form.is_valid():
+            form = Review(
+                name=request.POST["name"],
+                email=request.POST["email"],
+                review=request.POST["review"],
+                author=self.request.user,
+                book=current_book,
+            )
+            form.save()
+            return redirect('detail', book_id)
+        else:
+            book = current_book
+            return render(
+                request,
+                "booksaw/main/detail/book_detail.html",
+                {
+                    "book": book,
+                    "form": form,
+                }
+            )
