@@ -1,4 +1,23 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+
+class TimeStamp(models.Model):
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    # Don't make table of this class/model
+    class Meta:
+        abstract = True
+
+
+class NameEmailField(models.Model):
+    name = models.CharField(max_length=64)
+    email = models.EmailField()
+
+    class Meta:
+        # Don't make table of this class/model
+        abstract = True
 
 
 class Genre(models.Model):
@@ -15,7 +34,7 @@ class Tag(models.Model):
         return self.name
 
 
-class Book(models.Model):
+class Book(TimeStamp):
     title = models.CharField(max_length=64)
     description = models.TextField()
     author = models.CharField(max_length=64)
@@ -36,30 +55,30 @@ class Book(models.Model):
         return self.title
 
 
-class NameEmailField(models.Model):
-    name = models.CharField(max_length=64)
-    email = models.EmailField()
-
-    class Meta:
-        # Don't make table of this class/model
-        abstract = True
-
-
-class Comment(NameEmailField):
-    comment = models.TextField()
+class Review(NameEmailField, TimeStamp):
+    book = models.ForeignKey(
+        Book,
+        on_delete=models.CASCADE,
+        related_name="reviews",
+    )
+    review = models.TextField()
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
-        return f"{self.name}: {self.comment[:25]}"
+        return f"{self.name}: {self.review[:30]}"
 
 
-class Contact(NameEmailField):
+class Contact(NameEmailField, TimeStamp):
     message = models.TextField()
 
     def __str__(self):
         return f"{self.name}: {self.message[:25]}"
 
 
-class NewsLetter(models.Model):
+class NewsLetter(TimeStamp):
     email = models.EmailField()
 
     def __str__(self):
