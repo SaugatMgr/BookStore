@@ -24,8 +24,22 @@
                 </div>
                 <div class="col-md-6">
                     <div class="right-element">
-                        <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-                        <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                        <a href="{% url 'logout' %}" class="user-account for-buy">
+                            <i class="icon icon-user"></i>
+                            <span>LogOut</span>
+                        </a>
+                        <a href="{% url 'login' %}" class="user-account for-buy">
+                            <i class="icon icon-user"></i>
+                            <span>LogIn</span>
+                        </a>
+                        <a href="{% url 'signup' %}" class="user-account for-buy">
+                            <i class="icon icon-user"></i>
+                            <span>SignUp</span>
+                        </a>
+                        <a href="#" class="cart for-buy">
+                            <i class="icon icon-clipboard"></i>
+                            <span>Cart:(0 $)</span>
+                        </a>
                         <div class="action-menu">
                             <div class="search-bar">
                                 <a href="#"
@@ -36,7 +50,7 @@
                                 <form role="search" method="get" class="search-box">
                                     <input class="search-field text search-input"
                                            placeholder="Search"
-                                           type="search">
+                                           type="search" />
                                 </form>
                             </div>
                         </div>
@@ -53,7 +67,7 @@
                 <div class="col-md-2">
                     <div class="main-logo">
                         <a href="{% url 'home' %}">
-                            <img src="{% static 'booksaw/images/main-logo.png' %}" alt="logo">
+                            <img src="{% static 'booksaw/images/main-logo.png' %}" alt="logo" />
                         </a>
                     </div>
                 </div>
