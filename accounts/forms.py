@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
 class SignUpForm(UserCreationForm):
@@ -55,4 +55,31 @@ class SignUpForm(UserCreationForm):
             "email",
             "password1",
             "password2",
+        ]
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["username"].widget.attrs.update({
+            "class": "form-control mb-4 mr-4",
+            "class": "u-full-width",
+            "placeholder": "Username"
+        })
+        # needed to do this otherwise the maxlength of username was 150
+        self.fields["username"].widget.attrs["maxlength"] = 64
+        self.fields["password"].widget.attrs.update({
+            "class": "form-control mb-4 mr-4",
+            "class": "u-full-width",
+            "placeholder": "Password"
+        })
+        
+    username = forms.CharField(max_length=64)
+    password = forms.CharField(max_length=64)
+
+    class Meta:
+        fields = [
+            "username",
+            "password",
         ]
