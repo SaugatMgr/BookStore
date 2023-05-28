@@ -69,14 +69,16 @@ class LoginForm(AuthenticationForm):
         })
         # needed to do this otherwise the maxlength of username was 150
         self.fields["username"].widget.attrs["maxlength"] = 64
+
         self.fields["password"].widget.attrs.update({
             "class": "form-control mb-4 mr-4",
             "class": "u-full-width",
             "placeholder": "Password"
         })
-        
+
     username = forms.CharField(max_length=64)
-    password = forms.CharField(max_length=64)
+    password = forms.CharField(max_length=64,
+                               widget=forms.PasswordInput())
 
     class Meta:
         fields = [
