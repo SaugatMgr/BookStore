@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # overriding default account(login, logout, etc.) related templates
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local
     'books.apps.BooksConfig',
-    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
