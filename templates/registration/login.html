@@ -7,25 +7,17 @@
         <form action="" method="post" class="form-group mt-3">
             {% csrf_token %}
             <div class="row">
+                {{ form.non_field_errors }}
                 <div class="col-md-12">
-                    <label for="username">Username*</label>
-                    <input class="u-full-width"
-                        type="text"
-                        name="username"
-                        class="form-control mb-4 mr-4"
-                        placeholder="Username"
-                        style="height:50px;">
+                    <label for="{{ form.username.id_for_label }}">Username*</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
                 </div>
-            </div>
-            <div class="row">
+
                 <div class="col-md-12">
-                    <label for="password">Password*</label>
-                    <input class="u-full-width"
-                        type="password"
-                        name="password"
-                        class="form-control mb-4"
-                        placeholder="Password"
-                        style="height:50px;">
+                    <label for="{{ form.password.id_for_label }}">Password*</label>
+                    {{ form.password }}
+                    {{ form.password.errors }}
                 </div>
                 <div class="col-md-12">
                     <p>Don't have an account? <a href="">Sign Up here</a></p>
