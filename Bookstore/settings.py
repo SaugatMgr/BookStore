@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local
     'books.apps.BooksConfig',
+    # Third Party
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
