@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     # Third Party
     'widget_tweaks',
+    'fontawesome_free',
 ]
 
 MIDDLEWARE = [
