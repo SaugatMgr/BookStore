@@ -29,13 +29,16 @@
                                 <i class="icon icon-user"></i>
                                 <span>{{ user.username }}</span>
                             </a>
+                            <a href="{% url 'password_change' %}">
+                                <span>Change Password</span>
+                            </a>
                             <a href="{% url 'logout' %}" class="user-account for-buy">
-                                <i class="icon icon-user"></i>
+                                <i class="fas fa-sign-out-alt"></i>
                                 <span>LogOut</span>
                             </a>
                         {% else %}
                             <a href="{% url 'login' %}" class="user-account for-buy">
-                                <i class="icon icon-user"></i>
+                                <i class="fas fa-sign-in-alt"></i>
                                 <span>LogIn</span>
                             </a>
                             <a href="{% url 'signup' %}" class="user-account for-buy">
