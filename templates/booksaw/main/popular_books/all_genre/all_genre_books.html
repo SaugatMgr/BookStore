@@ -15,7 +15,11 @@
                                 {{ popular_book.title }}
                             </a>
                         </h3>
-                        <p>{{ popular_book.author }}</p>
+                        <p>
+                            <a href="{% url 'author_books' %}">
+                                {{ popular_book.author }}
+                            </a>
+                        </p>
                         <div class="item-price">$ {{ popular_book.price }}</div>
                     </figcaption>
                 </figure>
