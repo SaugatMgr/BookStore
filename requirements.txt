@@ -6,6 +6,7 @@ Django==4.2.1
 django-widget-tweaks==1.4.12
 djlint==1.29.0
 EditorConfig==0.12.3
+fontawesome-free==5.15.4
 html-tag-names==0.1.2
 html-void-elements==0.1.0
 jsbeautifier==1.14.7
