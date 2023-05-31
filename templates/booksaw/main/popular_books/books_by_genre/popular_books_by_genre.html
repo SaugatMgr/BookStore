@@ -15,7 +15,12 @@
                             </button>
                             <figcaption>
                                 <h3>{{ book.title }}</h3>
-                                <p>{{ book.author }}</p>
+
+                                <a href="{% url 'author_books' book.author %}">
+                                    <p>
+                                        {{ book.author }}
+                                    </p>
+                                </a>
                                 <div class="item-price">$ {{ book.price }}</div>
                             </figcaption>
                         </figure>

@@ -26,7 +26,10 @@
                                                 {{ featured_book.title }}
                                             </a>
                                         </h3>
-                                        <p>{{ featured_book.author }}</p>
+                                        <a href="{% url 'author_books' featured_book.author %}">
+                                            <p>{{ featured_book.author }}</p>
+                                        </a>
+                                        
                                         <div class="item-price">$ {{ featured_book.price }}</div>
                                     </figcaption>
                                 </figure>

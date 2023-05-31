@@ -17,7 +17,11 @@
                         <div class="product-entry">
                             <h2 class="section-title divider">Best Selling Book</h2>
                             <div class="products-content">
-                                <div class="author-name">By {{ best_selling_book.author }}</div>
+                                <div class="author-name">By 
+                                    <a href="{% url 'author_books' best_selling_book.author %}">
+                                        {{ best_selling_book.author }}
+                                    </a>
+                                </div>
                                 <h3 class="item-title">
                                     <a href="{% url 'detail' best_selling_book.pk %}">
                                         {{ best_selling_book.title }}
