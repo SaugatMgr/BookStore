@@ -56,16 +56,40 @@
 
 				success: function(response){
 					$("#newsletter_msg").append(
-						`<div>${response.message}</div>`
-						).delay(2000).fadeOut('slow')
-					console.log(data)
+						`
+						<div class="alert" role="alert">
+							${response.message}
+						</div>
+						`
+					)
+					setTimeout(function(){
+						$('.alert').alert('close')
+					}, 2000)
 				},
 
 				error: function(response){
 					$("#newsletter_msg").append(
-						`${response.responseJSON.message}`
-					).delay(2000).fadeOut('slow')
-				},
+						`
+						<div class="alert" role="alert">
+							${response.responseJSON.message}
+						</div>
+						`
+					)
+					setTimeout(function(){
+						$('.alert').alert('close')
+					}, 2000)
+				}
+				// success: function(response){
+				//	$("#newsletter_msg").append(
+				//		`<div>${response.message}</div>`
+				//		).delay(2000).fadeOut('slow')
+				//},
+
+				//error: function(response){
+				//	$("#newsletter_msg").append(
+				//		`${response.responseJSON.message}`
+				//	).delay(2000).fadeOut('slow')
+				//},
 			});
 		});
 	</script>
