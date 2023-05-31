@@ -1,7 +1,8 @@
+from typing import Any
 from django.shortcuts import redirect, render
 from django.views.generic import View, ListView, DetailView, TemplateView
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 
 from .forms import ContactForm, NewsLetterForm, ReviewForm
 
@@ -33,18 +34,19 @@ class HomePageView(ListView):
 
         return context
 
-# class BookByGenre(ListView):
+
+# class BooksByGenre(ListView):
 #     model = Book
 #     template_name = "booksaw/main/popular_books/books_by_genre/popular_books_by_genre.html"
-#     context_object_name = "books_by_genre"
+#     context_object_name = "books"
 
 #     def get_queryset(self):
 #         query = super().get_queryset()
 
 #         query = query.filter(
-#             copies_sold__gt=0,
-#             genre = self.kwargs['genre_id'],
+#             genre=self.kwargs['genre_id'],
 #         )
+#         print(query)
 #         return query
 
 
@@ -84,25 +86,25 @@ class BookDetailView(DetailView):
 class NewsLetterView(View):
     def post(self, request, *args, **kwargs):
         ajax_format = request.headers.get("x-requested-with")
-        
+
         if ajax_format == "XMLHttpRequest":
             form = NewsLetterForm(request.POST)
             if form.is_valid():
                 form.save()
-                
+
                 return JsonResponse(
                     {
-                    "success": True,
-                    "message": "Thank you for subscribing to our newsletter! We look forward to \
+                        "success": True,
+                        "message": "Thank you for subscribing to our newsletter! We look forward to \
                                 sharing exciting literary adventures with you straight to your inbox."
                     },
-                    status=201, # create code
+                    status=201,  # create code
                 )
             else:
                 return JsonResponse(
                     {
-                    "success": False,
-                    "message": "Oops! It seems there was an issue with your newsletter \
+                        "success": False,
+                        "message": "Oops! It seems there was an issue with your newsletter \
                                 subscription—please double-check your email and try again."
                     },
                     status=400,
@@ -114,13 +116,14 @@ class NewsLetterView(View):
             },
             status=400,
         )
-        
+
+
 class ReviewView(View):
     def post(self, request, *args, **kwargs):
         form = ReviewForm(request.POST)
         book_id = request.POST["book"]
         current_book = Book.objects.get(pk=book_id)
-        
+
         if form.is_valid():
             form = Review(
                 name=request.POST["name"],
@@ -141,3 +144,18 @@ class ReviewView(View):
                     "form": form,
                 }
             )
+
+
+class BooksByAuthorView(ListView):
+    model = Book
+    template_name = "booksaw/main/authors/books_by_author.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        author_name = self.kwargs["author_name"]
+
+        context["books_by_author"] = Book.objects.filter(
+            author=author_name
+        )
+
+        return context
