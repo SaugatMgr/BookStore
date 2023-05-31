@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <div class="container">    
+        {% for book in books_by_author %}
+            <h1>Books By {{ book.author }}</h1>
+            <div class="col-md-3">
+                <figure class="product-style">
+                    <img src="{{ book.book_cover.url }}"
+                        alt="{{ book.title }}"
+                        class="product-item"
+                        style="width:290px;height:380px;">
+                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                        Add to Cart
+                    </button>
+                    <figcaption>
+                        <h3>{{ book.title }}</h3>
+                        <p>{{ book.author }}</p>
+                        <div class="item-price">$ {{ book.price }}</div>
+                    </figcaption>
+                </figure>
+            </div>      
+        {% endfor %}
+    </div>
+    
+{% endblock content %}
