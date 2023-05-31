@@ -17,10 +17,16 @@
 	    <link rel="stylesheet" type="text/css" href="{% static 'booksaw/css/vendor.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{% static 'booksaw/style.css' %}">
 
+		<!-- fontawesome_free django css -->
+		<link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
 		<!-- script
 		================================================== -->
 		<script src="{% static 'booksaw/js/modernizr.js' %}"></script>
 
+		<!-- fontawesome_free django js -->
+		<script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+		
 	</head>
 
 <body>
@@ -36,6 +42,33 @@
 <script src="{% static 'booksaw/js/jquery-1.11.0.min.js' %}"></script>
 <script src="{% static 'booksaw/js/plugins.js' %}"></script>
 <script src="{% static 'booksaw/js/script.js' %}"></script>
+
+	<script>
+		$("#newsletter_form").submit(function(e){
+			// won't refresh the page
+			e.preventDefault()
+			var serializedData = $(this).serialize();
+			
+			$.ajax({
+				type: "POST",
+				url: "{% url 'newsletter' %}",
+				data: serializedData,
+
+				success: function(response){
+					$("#newsletter_msg").append(
+						`<div>${response.message}</div>`
+						).delay(2000).fadeOut('slow')
+					console.log(data)
+				},
+
+				error: function(response){
+					$("#newsletter_msg").append(
+						`${response.responseJSON.message}`
+					).delay(2000).fadeOut('slow')
+				},
+			});
+		});
+	</script>
 
 </body>
 </html>	
