@@ -155,7 +155,7 @@ class BooksByAuthorView(ListView):
         author_name = self.kwargs["author_name"]
 
         context["books_by_author"] = Book.objects.filter(
-            author=author_name
-        )
+            author=author_name,
+        ).order_by("-title")
 
         return context
