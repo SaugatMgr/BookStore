@@ -1,9 +1,12 @@
 {% extends "_base.html" %}
 
 {% block content %}
-    <div class="container">    
-        {% for book in books_by_author %}
+    <div class="container">
+        {% for book in books_by_author|slice:"1" %}
             <h1>Books By {{ book.author }}</h1>
+        {% endfor %}
+            
+        {% for book in books_by_author %}
             <div class="col-md-3">
                 <figure class="product-style">
                     <img src="{{ book.book_cover.url }}"
@@ -14,7 +17,11 @@
                         Add to Cart
                     </button>
                     <figcaption>
-                        <h3>{{ book.title }}</h3>
+                        <h3>
+                            <a href="{% url 'detail' book.pk %}">
+                                {{ book.title }}
+                            </a>
+                        </h3>
                         <p>{{ book.author }}</p>
                         <div class="item-price">$ {{ book.price }}</div>
                     </figcaption>
