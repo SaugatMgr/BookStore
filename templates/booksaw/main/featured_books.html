@@ -22,7 +22,7 @@
                                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                                     <figcaption>
                                         <h3>
-                                            <a href="{% url 'detail' featured_book.pk %}">
+                                            <a href="{% url 'book_detail' featured_book.slug %}">
                                                 {{ featured_book.title }}
                                             </a>
                                         </h3>

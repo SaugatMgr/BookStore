@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+from django.urls import reverse
+
 
 class TimeStamp(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
@@ -54,12 +56,15 @@ class Book(TimeStamp):
 
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         if self.slug is None:
             self.slug = slugify(self.title)
-            
+
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("book_detail", kwargs={"slug": self.slug})
 
 
 class Review(NameEmailField, TimeStamp):

@@ -11,7 +11,7 @@
                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                     <figcaption>
                         <h3>
-                            <a href="{% url 'detail' popular_book.pk %}">
+                            <a href="{% url 'book_detail' popular_book.slug %}">
                                 {{ popular_book.title }}
                             </a>
                         </h3>
@@ -37,7 +37,7 @@
                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                     <figcaption>
                         <h3>
-                            <a href="{% url 'detail' popular_book.pk %}">
+                            <a href="{% url 'book_detail' popular_book.slug %}">
                                 {{ popular_book.title }}
                             </a>
                         </h3>

@@ -13,7 +13,7 @@
                                 <h2 class="banner-title">{{ book.title }}</h2>
                                 <p>{{ book.description|truncatechars:109 }}</p>
                                 <div class="btn-wrap">
-                                    <a href="{% url 'detail' book.pk %}"
+                                    <a href="{% url 'book_detail' book.slug %}"
                                        class="btn btn-outline-accent btn-accent-arrow">
                                        Read More
                                        <i class="icon icon-ns-arrow-right"></i>

@@ -133,7 +133,7 @@ class ReviewView(View):
                 book=current_book,
             )
             form.save()
-            return redirect('detail', book_id)
+            return redirect('book_detail', current_book.slug)
         else:
             book = current_book
             return render(
