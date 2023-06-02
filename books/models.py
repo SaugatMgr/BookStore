@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
+from django.utils.text import slugify
 
 class TimeStamp(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
@@ -36,6 +36,7 @@ class Tag(models.Model):
 
 class Book(TimeStamp):
     title = models.CharField(max_length=64)
+    slug = models.SlugField(max_length=50, unique=True)
     description = models.TextField()
     author = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -53,6 +54,12 @@ class Book(TimeStamp):
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if self.slug is None:
+            self.slug = slugify(self.title)
+            
+        return super().save(*args, **kwargs)
 
 
 class Review(NameEmailField, TimeStamp):
