@@ -23,8 +23,9 @@ urlpatterns = [
     # Django admin
     path("admin/", admin.site.urls),
     # Local apps
-    path("", include("books.urls")),
     path("accounts/", include("accounts.urls")),
+    path("profile/", include("users.urls")),
+    path("", include("books.urls")),
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT,
 )
