@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local
     'books.apps.BooksConfig',
+    'users.apps.UsersConfig',
     # Third Party
     'widget_tweaks',
     'fontawesome_free',
