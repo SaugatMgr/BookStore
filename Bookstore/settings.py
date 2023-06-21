@@ -39,13 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # Local
     'books.apps.BooksConfig',
     'users.apps.UsersConfig',
     # Third Party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'widget_tweaks',
     'fontawesome_free',
+    # Social Providers
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.twitter', 
+    'allauth.socialaccount.providers.google', 
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,6 +146,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = None
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
