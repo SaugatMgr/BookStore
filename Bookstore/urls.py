@@ -21,6 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     # Django admin
+    path("social-auth/", include("allauth.urls")),
     path("admin/", admin.site.urls),
     # Local apps
     path("accounts/", include("accounts.urls")),
