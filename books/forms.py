@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Contact, NewsLetter, Review
+from .models import Contact, NewsLetter, Review, Book
 
 
 class ContactForm(forms.ModelForm):
@@ -22,3 +22,8 @@ class ReviewForm(forms.ModelForm):
             "email",
             "review",
         ]
+        
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        exclude = ('slug', 'copies_sold',)
