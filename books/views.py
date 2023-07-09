@@ -1,10 +1,19 @@
 from typing import Any
 from django.shortcuts import redirect, render
-from django.views.generic import View, ListView, DetailView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import (
+    View,
+    CreateView,
+    ListView,
+    DetailView,
+    UpdateView,
+    DeleteView,
+    TemplateView,
+)
 from django.contrib import messages
-from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.http import JsonResponse
 
-from .forms import ContactForm, NewsLetterForm, ReviewForm
+from .forms import ContactForm, NewsLetterForm, ReviewForm, BookForm
 
 from .models import Book, Genre, Review
 
@@ -24,7 +33,7 @@ class HomePageView(ListView):
 
         context['popular_books_top'] = filter_object[:4]
 
-        context['popular_books_bottom'] = filter_object[4:7]
+        context['popular_books_bottom'] = filter_object[4:]
 
         context['billboard_books'] = Book.objects.all()[:3:-1]
 
@@ -159,3 +168,30 @@ class BooksByAuthorView(ListView):
         ).order_by("-title")
 
         return context
+
+
+class AddBookView(CreateView):
+    model = Book
+    form_class = BookForm
+    template_name = "book/add_book.html"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class AllBooksView(ListView):
+    model = Book
+    template_name = "book/all_books.html"
+    context_object_name = "books"
+
+
+class UpdateBookView(UpdateView):
+    model = Book
+    form_class = BookForm
+    template_name = "book/update_book.html"
+
+class DeleteBookView(DeleteView):
+    model = Book
+    template_name = "book/delete_book.html"
+    success_url = reverse_lazy("home")
