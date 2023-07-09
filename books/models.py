@@ -38,7 +38,7 @@ class Tag(models.Model):
 
 class Book(TimeStamp):
     title = models.CharField(max_length=64)
-    slug = models.SlugField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=50, unique=True, blank=True, null=True)
     description = models.TextField()
     author = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=5, decimal_places=2)
