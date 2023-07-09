@@ -44,21 +44,6 @@ class HomePageView(ListView):
         return context
 
 
-# class BooksByGenre(ListView):
-#     model = Book
-#     template_name = "booksaw/main/popular_books/books_by_genre/popular_books_by_genre.html"
-#     context_object_name = "books"
-
-#     def get_queryset(self):
-#         query = super().get_queryset()
-
-#         query = query.filter(
-#             genre=self.kwargs['genre_id'],
-#         )
-#         print(query)
-#         return query
-
-
 class AboutPageView(TemplateView):
     template_name = 'about.html'
 
@@ -190,6 +175,7 @@ class UpdateBookView(UpdateView):
     model = Book
     form_class = BookForm
     template_name = "book/update_book.html"
+
 
 class DeleteBookView(DeleteView):
     model = Book
