@@ -39,12 +39,12 @@ class MyProfile(LoginRequiredMixin, View):
             messages.success(
                 request, 'Your profile has been updated successfully')
 
-            return redirect('profile')
+            return redirect('users:profile')
         else:
             context = {
                 'user_form': user_form,
                 'profile_form': profile_form
             }
-            messages.error(request, 'Error updating you profile')
+            messages.error(request, 'Error updating your profile')
 
             return render(request, 'users/profile.html', context)
