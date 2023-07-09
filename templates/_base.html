@@ -31,17 +31,17 @@
 
 <body>
 
-{% include "booksaw/header/header.html" %}
+	{% include "booksaw/header/header.html" %}
 
-{% block content %}
-  
-{% endblock content %}
+	{% block content %}
+	
+	{% endblock content %}
 
-{% include "booksaw/footer/footer.html" %}
+	{% include "booksaw/footer/footer.html" %}
 
-<script src="{% static 'booksaw/js/jquery-1.11.0.min.js' %}"></script>
-<script src="{% static 'booksaw/js/plugins.js' %}"></script>
-<script src="{% static 'booksaw/js/script.js' %}"></script>
+	<script src="{% static 'booksaw/js/jquery-1.11.0.min.js' %}"></script>
+	<script src="{% static 'booksaw/js/plugins.js' %}"></script>
+	<script src="{% static 'booksaw/js/script.js' %}"></script>
 
 	<script>
 		$("#newsletter_form").submit(function(e){
