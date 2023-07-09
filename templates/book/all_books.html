@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Action</th>
+            </tr>
+    
+            {% for book in books %}
+                <tr>
+                    <td>
+                        {{ book.title }}
+                    </td>
+                    <td>
+                        {{ book.author }}
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-rounded" style="height:40px;">
+                            <a href="{% url 'update_book' book.slug %}" style="text-decoration:none;color:white;">
+                                Update
+                            </a>
+                        </button>
+                        <button type="submit" class="btn btn-rounded" style="height:40px;">
+                            <a href="{% url 'delete_book' book.slug %}" style="text-decoration:none;color:white;">
+                                Delete
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                
+            {% endfor %}
+                
+        </table>
+    </div>
+
+{% endblock content %}

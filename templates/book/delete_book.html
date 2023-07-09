@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 style="text-align:left;">Delete Book</h1>
+        <form method="post">{% csrf_token %}
+            <p style="font-size: 18px;margin-bottom:auto;">
+                Are you sure you want to delete <b>{{ book.title }}?</b>
+            </p>
+            <button type="submit" class="btn btn-rounded" style="height:40px;">
+                Confirm
+            </button>
+        </form>
+    </div>
+{% endblock content %}
