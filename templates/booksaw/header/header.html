@@ -4,7 +4,7 @@
     <div class="top-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="social-links">
                         <ul>
                             <li>
@@ -23,18 +23,49 @@
                     </div>
                     <!--social-links-->
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div class="right-element">
                         {% if user.is_authenticated %}
-                            <a href="{% url 'users:profile' %}" class="user-account for-buy">
-                                <i class="icon icon-user"></i>
-                                <span>{{ user.username }}</span>
-                            </a>
-                            
-                            <a href="{% url 'logout' %}" class="user-account for-buy">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>LogOut</span>
-                            </a>
+                        <div class="main-menu stellarnav">
+                            <ul class="menu-list">
+                                <li class="menu-item has-sub">
+                                    <a href="#user" class="nav-link" data-effect="User">
+                                        {{ user.username }}
+                                    </a>
+                                    <ul>
+                                        <li class="active">
+                                            <a href="{% url 'users:profile' %}" class="user-account for-buy">
+                                                <i class="icon icon-user"></i>
+                                                <span>Profile</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'logout' %}" class="user-account for-buy">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span>LogOut</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'password_change' %}">
+                                                <span>Change Password</span>
+                                            </a>
+                                        </li>
+                                        {% if user.is_superuser %}
+                                        <li>
+                                            <a href="{% url 'add_book' %}">
+                                                <span>Add Book</span>
+                                            </a>
+                                        </li>
+                                        
+                                            <a href="{% url 'all_books' %}">
+                                                <span>All Books</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}                          
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                         {% else %}
                             <a href="{% url 'login' %}" class="user-account for-buy">
                                 <i class="fas fa-sign-in-alt"></i>
@@ -63,6 +94,7 @@
                                 </form>
                             </div>
                         </div>
+                        
                     </div>
                     <!--top-right-->
                 </div>
