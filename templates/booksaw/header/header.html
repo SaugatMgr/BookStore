@@ -33,15 +33,19 @@
                                 </a>
                                 <div class="action-menu">
                                     <div class="search-bar">
-                                        <a href="#"
+                                        <a href="{% url 'book_search_results' %}"
                                            class="search-button search-toggle"
                                            data-selector="#header-wrap">
                                             <i class="icon icon-search"></i>
                                         </a>
-                                        <form role="search" method="get" class="search-box">
+                                        <form action="{% url 'book_search_results' %}"
+                                              role="search" method="get"
+                                              class="search-box">
                                             <input class="search-field text search-input"
                                                    placeholder="Search"
-                                                   type="search" />
+                                                   type="search"
+                                                   name="query"
+                                                   aria-label="Search">
                                         </form>
                                     </div>
                                 </div>
