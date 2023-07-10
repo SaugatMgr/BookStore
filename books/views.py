@@ -1,4 +1,4 @@
-from typing import Any
+from django.db.models import Q
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -189,4 +189,15 @@ class AllProductsView(ListView):
     model = Book
     template_name = "all_products.html"
     context_object_name = "books"
+   
+class SearchView(ListView):
+    model = Book
+    template_name = "book/book_search_list.html"
+    context_object_name = "book_list"
     
+    def get_queryset(self):
+        query = self.request.GET.get("query")
+        book_list =  Book.objects.filter(
+            (Q(title__icontains=query) | Q(author__icontains=query) | Q(tag__name__icontains=query) | Q(genre__name__icontains=query) | Q(description__icontains=query))
+        ).order_by("-copies_sold") 
+        return book_list
