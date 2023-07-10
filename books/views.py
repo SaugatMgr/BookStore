@@ -30,6 +30,8 @@ class HomePageView(ListView):
             copies_sold__gt=0).order_by("-copies_sold")
 
         context['best_selling_book'] = filter_object.first()
+        
+        context['books_with_offer'] = filter_object[:5]
 
         context['popular_books_top'] = filter_object[:4]
 
@@ -181,3 +183,10 @@ class DeleteBookView(DeleteView):
     model = Book
     template_name = "book/delete_book.html"
     success_url = reverse_lazy("home")
+
+
+class AllProductsView(ListView):
+    model = Book
+    template_name = "all_products.html"
+    context_object_name = "books"
+    
