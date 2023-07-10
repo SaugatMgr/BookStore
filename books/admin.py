@@ -7,10 +7,11 @@ class BookAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ("title", ),
     }
+    search_fields = ['title', 'author', 'description', 'tag__name', 'genre__name']
 
-admin.site.register(Book, BookAdmin)
 admin.site.register(Genre)
 admin.site.register(Tag)
 admin.site.register(Contact)
 admin.site.register(Review)
 admin.site.register(NewsLetter)
+admin.site.register(Book, BookAdmin)
