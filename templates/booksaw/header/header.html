@@ -25,9 +25,27 @@
                 </div>
                 <div class="col-md-9">
                     <div class="right-element">
-                        {% if user.is_authenticated %}
                         <div class="main-menu stellarnav">
                             <ul class="menu-list">
+                                <a href="#" class="cart for-buy">
+                                    <i class="icon icon-clipboard"></i>
+                                    <span>Cart:(0 $)</span>
+                                </a>
+                                <div class="action-menu">
+                                    <div class="search-bar">
+                                        <a href="#"
+                                           class="search-button search-toggle"
+                                           data-selector="#header-wrap">
+                                            <i class="icon icon-search"></i>
+                                        </a>
+                                        <form role="search" method="get" class="search-box">
+                                            <input class="search-field text search-input"
+                                                   placeholder="Search"
+                                                   type="search" />
+                                        </form>
+                                    </div>
+                                </div>
+                                {% if user.is_authenticated %}
                                 <li class="menu-item has-sub">
                                     <a href="#user" class="nav-link" data-effect="User">
                                         {{ user.username }}
@@ -64,37 +82,18 @@
                                         {% endif %}                          
                                     </ul>
                                 </li>
+                                {% else %}
+                                    <a href="{% url 'login' %}" class="user-account for-buy">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <span>LogIn</span>
+                                    </a>
+                                    <a href="{% url 'signup' %}" class="user-account for-buy">
+                                        <i class="icon icon-user"></i>
+                                        <span>SignUp</span>
+                                    </a>
+                                {% endif %}
                             </ul>
                         </div>
-                        {% else %}
-                            <a href="{% url 'login' %}" class="user-account for-buy">
-                                <i class="fas fa-sign-in-alt"></i>
-                                <span>LogIn</span>
-                            </a>
-                            <a href="{% url 'signup' %}" class="user-account for-buy">
-                                <i class="icon icon-user"></i>
-                                <span>SignUp</span>
-                            </a>
-                        {% endif %}
-                        <a href="#" class="cart for-buy">
-                            <i class="icon icon-clipboard"></i>
-                            <span>Cart:(0 $)</span>
-                        </a>
-                        <div class="action-menu">
-                            <div class="search-bar">
-                                <a href="#"
-                                   class="search-button search-toggle"
-                                   data-selector="#header-wrap">
-                                    <i class="icon icon-search"></i>
-                                </a>
-                                <form role="search" method="get" class="search-box">
-                                    <input class="search-field text search-input"
-                                           placeholder="Search"
-                                           type="search" />
-                                </form>
-                            </div>
-                        </div>
-                        
                     </div>
                     <!--top-right-->
                 </div>
