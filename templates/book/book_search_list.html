@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <div class="container">
+        {% for book in book_list %}
+            <div class="col-md-3">
+                <img src="{{ book.book_cover.url }}"
+                     alt="{{ book.title }}"
+                     style="width:290px;height:343px;">
+            </div>
+            <div class="col-md-9" style="margin-bottom: 20px;">
+                <div class="product-detail">
+                    <h3>{{ book.title }}</h3>
+                    <p style="margin-top:auto;margin-bottom:10px;">{{ book.genre }}</p>
+                    <p style="margin-bottom:10px;">By {{ book.author }}</p>
+                    <span class="price colored">
+                        Price: ${{ book.price }}
+                    </span>
+                    <p style="margin-top:10px;">{{ book.description|linebreaksbr|truncatechars:301 }}</p>
+                </div>
+            </div><br>
+
+        {% endfor %}
+    </div>
+    
+{% endblock content %}
