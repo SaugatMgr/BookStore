@@ -45,10 +45,10 @@
                     <h5>Discover</h5>
                     <ul class="menu-list">
                         <li class="menu-item">
-                            <a href="#">Home</a>
+                            <a href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#">Books</a>
+                            <a href="{% url 'all_products' %}">Books</a>
                         </li>
                         <li class="menu-item">
                             <a href="#">Authors</a>
@@ -67,13 +67,13 @@
                     <h5>My account</h5>
                     <ul class="menu-list">
                         <li class="menu-item">
-                            <a href="#">Sign In</a>
+                            <a href="{% url 'signup' %}">Sign In</a>
                         </li>
                         <li class="menu-item">
                             <a href="#">View Cart</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#">My Wishtlist</a>
+                            <a href="#">My Wish list</a>
                         </li>
                         <li class="menu-item">
                             <a href="#">Track My Order</a>
@@ -89,13 +89,13 @@
                             <a href="#">Help center</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#">Report a problem</a>
+                            <a href="{% url 'contact' %}">Report a problem</a>
                         </li>
                         <li class="menu-item">
                             <a href="#">Suggesting edits</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#">Contact us</a>
+                            <a href="{% url 'contact' %}">Contact us</a>
                         </li>
                     </ul>
                 </div>
