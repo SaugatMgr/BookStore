@@ -19,6 +19,9 @@
                     <p style="margin-top:10px;">{{ book.description|linebreaksbr|truncatechars:301 }}</p>
                 </div>
             </div><br>
+            
+            {% empty %}
+                    <h3>No Match Found...</h3>
 
         {% endfor %}
     </div>
