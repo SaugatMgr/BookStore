@@ -10,6 +10,8 @@ from django.views.generic import (
     DeleteView,
     TemplateView,
 )
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import JsonResponse
@@ -36,28 +38,27 @@ class HomePageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        filter_object = Book.objects.filter(
-            copies_sold__gt=0).order_by("-copies_sold")
+        filter_object = Book.objects.filter(copies_sold__gt=0).order_by("-copies_sold")
 
-        context['best_selling_book'] = filter_object.first()
+        context["best_selling_book"] = filter_object.first()
 
-        context['books_with_offer'] = filter_object[:5]
+        context["books_with_offer"] = filter_object[:5]
 
-        context['popular_books_top'] = filter_object[:4]
+        context["popular_books_top"] = filter_object[:4]
 
-        context['popular_books_bottom'] = filter_object[4:]
+        context["popular_books_bottom"] = filter_object[4:]
 
-        context['billboard_books'] = Book.objects.all()[:3:-1]
+        context["billboard_books"] = Book.objects.all()[:3:-1]
 
-        context['featured_books'] = filter_object[:4:-1]
+        context["featured_books"] = filter_object[:4:-1]
 
-        context['genres'] = Genre.objects.all()[:5]
+        context["genres"] = Genre.objects.all()[:5]
 
         return context
 
 
 class AboutPageView(TemplateView):
-    template_name = 'about.html'
+    template_name = "about.html"
 
 
 class ContactPageView(LoginRequiredMixin, View):
@@ -72,21 +73,23 @@ class ContactPageView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             messages.success(
-                request, "Your message has been successfully sent—thank you for reaching out to us!"
+                request,
+                "Your message has been successfully sent—thank you for reaching out to us!",
             )
             return redirect("contact")
         else:
             messages.error(
-                request, "Please ensure all required fields are filled out correctly \
-                to submit the contact form."
+                request,
+                "Please ensure all required fields are filled out correctly \
+                to submit the contact form.",
             )
             return render(request, self.template_name, {"form": form})
 
 
 class BookDetailView(DetailView):
     model = Book
-    template_name = 'booksaw/main/detail/book_detail.html'
-    context_object_name = 'book'
+    template_name = "booksaw/main/detail/book_detail.html"
+    context_object_name = "book"
 
 
 class NewsLetterView(LoginRequiredMixin, View):
@@ -102,7 +105,7 @@ class NewsLetterView(LoginRequiredMixin, View):
                     {
                         "success": True,
                         "message": "Thank you for subscribing to our newsletter! We look forward to \
-                                sharing exciting literary adventures with you straight to your inbox."
+                                sharing exciting literary adventures with you straight to your inbox.",
                     },
                     status=201,  # create code
                 )
@@ -111,14 +114,14 @@ class NewsLetterView(LoginRequiredMixin, View):
                     {
                         "success": False,
                         "message": "Oops! It seems there was an issue with your newsletter \
-                                subscription—please double-check your email and try again."
+                                subscription—please double-check your email and try again.",
                     },
                     status=400,
                 )
         return JsonResponse(
             {
-                'success': False,
-                'message': 'Cannot process.Must be and AJAX XMLHttpRequest.',
+                "success": False,
+                "message": "Cannot process.Must be and AJAX XMLHttpRequest.",
             },
             status=400,
         )
@@ -139,7 +142,7 @@ class ReviewView(LoginRequiredMixin, View):
                 book=current_book,
             )
             form.save()
-            return redirect('book_detail', current_book.slug)
+            return redirect("book_detail", current_book.slug)
         else:
             book = current_book
             return render(
@@ -148,7 +151,7 @@ class ReviewView(LoginRequiredMixin, View):
                 {
                     "book": book,
                     "form": form,
-                }
+                },
             )
 
 
@@ -177,8 +180,8 @@ class AddBookView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-
-class AllBooksView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+@method_decorator(cache_page(60 * 5), name="dispatch")
+class AllBooksView(LoginRequiredMixin, ListView):
     model = Book
     template_name = "book/all_books.html"
     context_object_name = "books"
@@ -213,7 +216,12 @@ class SearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get("query")
         book_list = Book.objects.filter(
-            (Q(title__icontains=query) | Q(author__icontains=query) | Q(tag__name__icontains=query) | Q(
-                genre__name__icontains=query) | Q(description__icontains=query))
+            (
+                Q(title__icontains=query)
+                | Q(author__icontains=query)
+                | Q(tag__name__icontains=query)
+                | Q(genre__name__icontains=query)
+                | Q(description__icontains=query)
+            )
         ).order_by("-copies_sold")
         return book_list

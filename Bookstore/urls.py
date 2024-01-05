@@ -21,12 +21,15 @@ from django.urls import path, include
 
 urlpatterns = [
     # Django admin
-    path("social-auth/", include("allauth.urls")),
     path("admin/", admin.site.urls),
+    # Third Party apps urls
+    path("social-auth/", include("allauth.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
     # Local apps
     path("accounts/", include("accounts.urls")),
     path("profile/", include("users.urls")),
     path("", include("books.urls")),
+
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT,
 )
